@@ -1,0 +1,44 @@
+﻿<Window x:Class="UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">
+    <Window.Resources>
+        <Style x:Key="button" TargetType="Button">
+            <Setter Property="Margin" Value="10px"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="Red" />
+            <Setter Property="TextDecorations" Value="Underline" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" Text="מגדל פיקוח שדה תעופה"/>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <Button Command="{Binding PendingFlightsBtn}" Style="{StaticResource button}" Content="טיסות ממתינות"/>
+            <Button Command="{Binding ProcessingFlightsBtn}" Style="{StaticResource button}" Content="טיסות בתהליך"/>
+            <Button Command="{Binding CompletedFlightsBtn}" Style="{StaticResource button}" Content="טיסות הסתיימו"/>
+            <Button Command="{Binding LegsBtn}" Style="{StaticResource button}" Content="תחנות"/>
+        </StackPanel>
+    </Grid>
+</Window>
